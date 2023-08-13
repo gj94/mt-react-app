@@ -13,4 +13,8 @@ after_success:
   - docker build -t gokuljayaraj/mt-server ./server
   - docker build -t gokuljayaraj/mt-worker ./worker
   - docker build -t gokuljayaraj/mt-nginx ./nginx
-
+  - echo "$DOCKER_PW" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push gokuljayaraj/mt-client
+  - docker push gokuljayaraj/mt-server
+  - docker push gokuljayaraj/mt-worker
+  - docker push gokuljayaraj/mt-nginx
