@@ -18,3 +18,15 @@ after_success:
   - docker push gokuljayaraj/mt-server
   - docker push gokuljayaraj/mt-worker
   - docker push gokuljayaraj/mt-nginx
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-southeast-1"
+  app: "mt-web-app"
+  env: "Mt-web-app-env"
+  bucket_name: "elasticbeanstalk-ap-southeast-1-781829211718"
+  bucket_path: "mt-web-app"
+  on:
+    branch: main
+  access_key_id: "$AWS_AK"
+  secret_access_key: "$AWS_SK"
